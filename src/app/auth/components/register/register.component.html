@@ -1,0 +1,119 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center stretch" class="login-background">
+  <br><br>
+  <h2 style="text-align: center">File Management</h2>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="login-card mat-elevation-z8">
+      <div fxLayout="column" fxFlexAlign="center center" fxFlex="100">
+        <div fxLayout="column" fxLayoutAlign="start stretch" class="login-header">
+          <mat-toolbar color="primary" id="toolbarHeader">
+            <mat-progress-bar *ngIf="isLoading" id="progressBar" color="accent" [mode]="'indeterminate'" [value]="valueSpiner" [bufferValue]="bufferValue">
+            </mat-progress-bar>
+            <mat-toolbar-row> </mat-toolbar-row>
+
+            <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="gappx">
+              <div class="mat-elevation-z4" id="ImgLayout"></div>
+            </mat-toolbar-row>
+
+            <mat-toolbar-row> </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+        <form name="register" class="login-form">
+          <div fxLayout="row" class="mt-3 mb-3" fxLayoutAlign="center center" fxLayoutGap="gappx">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="gappx">
+              <h1 class="mat-title">Regístrese en el sistema</h1>
+            </div>
+          </div>
+
+          <div fxLayout="column" class="mt-2" fxLayoutAlign="center center">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Nombre de Usuario</mat-label>
+              <input
+                matInput
+                placeholder="Nombre de Usuario"
+                autocomplete="off"
+                #username
+                [disabled]="isLoading"
+                [formControl]="registerForm.controls['username']"
+                name="username"
+              />
+              <mat-error *ngIf="this.registerForm.controls['username'].invalid"> {{ 'El nombre de usuario es' }} <strong>requerido</strong> </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Email"
+                autocomplete="off"
+                #email
+                [disabled]="isLoading"
+                [formControl]="registerForm.controls['email']"
+                name="email"
+              />
+              <mat-error *ngIf="this.registerForm.controls['email'].invalid"> {{ 'El email es' }} <strong>requerido</strong> </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input
+                [type]="passwordType"
+                matInput
+                placeholder="Contraseña"
+                autocomplete="off"
+                #pass
+                [disabled]="isLoading"
+                [formControl]="registerForm.controls['password']"
+                name="password"
+              />
+
+              <mat-icon style="cursor: pointer" *ngIf="passwordType == 'password'" mat-icon-button matSuffix (click)="passwordType = 'text'"
+              >visibility
+              </mat-icon>
+
+              <mat-icon style="cursor: pointer" *ngIf="passwordType == 'text'" mat-icon-button matSuffix (click)="passwordType = 'password'">
+                visibility_off</mat-icon
+              >
+              <mat-error *ngIf="this.registerForm.controls['password'].invalid"> {{ 'La contraseña es' }} <strong>requerido</strong> </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Confirme Contraseña</mat-label>
+              <input
+                [type]="passwordType"
+                matInput
+                placeholder="Contraseña"
+                #pass
+                [disabled]="isLoading"
+                [formControl]="registerForm.controls['confirm_password']"
+                name="confirm_password"
+              />
+
+              <mat-icon style="cursor: pointer" *ngIf="passwordType == 'password'" mat-icon-button matSuffix (click)="passwordType = 'text'"
+              >visibility
+              </mat-icon>
+
+              <mat-icon style="cursor: pointer" *ngIf="passwordType == 'text'" mat-icon-button matSuffix (click)="passwordType = 'password'">
+                visibility_off</mat-icon
+              >
+              <mat-error *ngIf="this.registerForm.controls['confirm_password'].invalid"> {{ 'La contraseña es' }} <strong>requerido</strong> </mat-error>
+            </mat-form-field>
+
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="registerForm.invalid || passwordControl?.value != confirm_passwordControl?.value"
+              (click)="register(registerForm.value)"
+              class="cf-margin-top-20 example-full-width"
+            >
+              Registrarse
+            </button>
+
+            <a class="mat-body-2 link mt-3" routerLink="/access/login">Ya tengo cuenta</a>
+
+            <!-- <mat-spinner diameter="60" color="primary" *ngIf="isLoading"></mat-spinner> -->
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>
+

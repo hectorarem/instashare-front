@@ -1,0 +1,89 @@
+<app-header></app-header>
+<div class="content-file">
+  <div class="body">
+    <mat-progress-bar *ngIf="fileLoading" mode="indeterminate"></mat-progress-bar>
+    <br *ngIf="fileLoading">
+    <div class="file-upload-right" >
+      <span class="file-buttom-active" *ngIf="file" (click)="fileUpload()">SUBIR</span>
+      <span class="file-buttom" *ngIf="!file" >SUBIR</span>
+    </div>
+    <div class="file-upload-left">
+      <label for="file_id">Subir nuevo fichero</label>
+      <input id="file_id" type="file" [multiple]="false" (change)="onFileSelected($event)" #fileid>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <mat-form-field appearance="standard" class="styled-filter">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="filename">
+  </mat-form-field>
+  <mat-progress-bar *ngIf="tableLoading" mode="indeterminate"></mat-progress-bar>
+  <table class="styled-table">
+
+    <thead>
+    <tr>
+      <th *ngFor="let name of displayedColumns">
+        {{name}}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let file of dataSource">
+      <td>
+        {{file.created_at|date:'Y-M-d'}}
+      </td>
+      <td>
+        {{file.uploaded_by}}
+      </td>
+      <td>
+          <span (dblclick)="activeEditFileName(file.id)" id="file_{{file.id}}">{{file.file_name}}</span>
+
+        <div id="file_id_{{file.id}}" hidden>
+          <input style="padding: 5px" id="file_name_id_{{file.id}}" type="text" value="{{file.file_name}}">
+          <a (click)="changeFileName(file.id)" style="color: #0d47a1" title="Guardar">
+            <mat-icon aria-hidden="false">save</mat-icon>
+          </a>
+          <a (click)="inactiveFileName(file.id)" style="color: indianred" title="Cerrar">
+            <mat-icon aria-hidden="false">close</mat-icon>
+          </a>
+        </div>
+
+      </td>
+      <td>
+        <b id="file_ext_{{file.id}}">{{file.file_extension}}</b>
+      </td>
+      <td>
+        {{file.file_size}}
+      </td>
+      <td>
+        <a id="download_file_id_{{file.id}}" href="{{file.file}}" style="color: #0d47a1" title="Descargar">
+          <mat-icon aria-hidden="false">download</mat-icon>
+        </a>
+        <a
+          id="file_edit_id_{{file.id}}"
+          style="color: #0d47a1"
+          title="Editar nombre del fichero"
+          (click)="activeEditFileName(file.id)"
+        >
+          <mat-icon aria-hidden="false">edit</mat-icon>
+        </a>
+        <a title="Eliminar" *ngIf="user.username===file.uploaded_by"  (click)="fileDelete(file.id)" style="color: #0d47a1">
+        <mat-icon aria-hidden="false">delete</mat-icon>
+        </a>
+
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+  <div class="pagination">
+    <div class="previous" *ngIf="previous" (click)="moveToPagePrevious()">
+      <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
+    </div>
+    <div class="next" *ngIf="next" (click)="moveToPageNext()">
+      <mat-icon aria-hidden="false">keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+</div>
+

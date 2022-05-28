@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <span>
+    <img style="margin-right: 20px" height="50px" src="../../../favicon.ico" alt="cuban engineer">
+  </span>
+  <small>InstaShare</small>
+  <span class="example-spacer"></span>
+  <small>Hola, {{userLogged.username}}</small>
+  <button *ngIf="!isLogin()" mat-icon-button routerLink="/access/login" aria-label="Login" title="Login">
+    <mat-icon>login</mat-icon>
+  </button>
+  <button *ngIf="isLogin()" mat-icon-button  aria-label="Logout" (click)="Logout()"  title="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+  <button *ngIf="!isLogin()" mat-icon-button aria-label="Registro"  title="Registro">
+    <mat-icon>app_registration</mat-icon>
+  </button>
+</mat-toolbar>

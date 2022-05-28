@@ -1,0 +1,111 @@
+.content{
+  padding: 20px;
+}
+.content a {
+  cursor: pointer;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.styled-filter {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-family: sans-serif;
+  min-width: 400px;
+  margin-left: 20px;
+  font-size: 15px;
+  width: 30%;
+}
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-left: 20px;
+  font-size: 15px;
+  width: 95%;
+}
+.styled-table thead tr {
+  background-color: #673ab7;
+  color: #ffffff;
+  text-align: left;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #673ab7;
+}
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #673ab7;
+}
+
+.pagination {
+  width: 95%;
+  float: right;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+.pagination .previous{
+  float: left;
+  background-color: lightgrey;
+  padding: 5px 5px;
+  border-radius: 50%;
+}
+.pagination .next{
+  float: right;
+  background-color: lightgrey;
+  padding: 5px 5px;
+  border-radius: 50%;
+}
+
+.content-file{
+  padding: 20px;
+}
+.content-file .body{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 30%;
+  float: right;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-right: 3%;
+}
+
+.file-upload-right {
+  float: right;
+  width: 30%;
+}
+
+.file-upload-left {
+  float: left;
+  width: 50%;
+}
+.file-upload-right .file-buttom-active{
+  padding: 10px 20px;
+  background-color: #673ab7;
+  color: white;
+  cursor: pointer;
+}
+.file-upload-right .file-buttom{
+  padding: 10px 20px;
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+}
