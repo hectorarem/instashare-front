@@ -19,6 +19,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="filename">
   </mat-form-field>
   <mat-progress-bar *ngIf="tableLoading" mode="indeterminate"></mat-progress-bar>
+  <div style="overflow-x:auto;">
   <table class="styled-table">
 
     <thead>
@@ -77,6 +78,7 @@
     </tbody>
 
   </table>
+  </div>
   <div class="pagination">
     <div class="previous" *ngIf="previous" (click)="moveToPagePrevious()">
       <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
